@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>screenlock</title>
+    <style>
+     
+        body{
+            background-color: #EFEFEF;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #key{
+            border-radius: 5px;
+            text-align: center;
+            border: none;
+            background-color: rgb(15, 15, 15);
+            color: white;
+            font-size: 16px;
+        }
+        .sbmt{
+            width: 80px;
+            height: 30px;
+            border: none;
+            border-radius: 6px;
+            background-color: yellowgreen;
+        }
+
+        .container{
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            display: none;
+            width: 50vw;
+            height: auto ;
+            padding: 10vh;
+      
+        }
+          .btn{
+            color: rgb(16, 125, 214);
+            width: 30px;
+            padding:10px;
+            border: none;
+            border-radius: 5px;
+        } 
+        #input{
+            width: 20px;
+            border-radius: 10px;
+            text-align: center;
+            height: 15px;
+        }
+        button:hover{
+            background-color: rgb(34, 2, 216);
+        }
+         
+        .para{
+            display: none;
+        }
+        .key-contain{
+            width: 50vw;
+            height: 50vh;
+            text-align: center;
+            justify-content: center;
+            padding-top: 10vh; 
+            margin-bottom: 5vh;
+            
+        }
+        #key{
+            width: 40vw;
+            height: 10vh;
+            margin-bottom: 3vh;
+        }
+        .p{
+            height: 100vh;
+        }
+        #input{
+            width: 30vh;
+            height: 10vh;
+            background-color: rgba(194, 241, 180, 0.5);
+            color: rgb(11, 25, 148);
+            font-size: larger;
+        }
+        .buttons{
+            gap: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="key-contain" id="keycontainer">
+        <h1>Set 4 Digit Pin </h1>
+        <input placeholder="Enter the Key here to set" type="text" id="key" maxlength="4" minlength="4" pattern="0,1,2,3,4,5,6,7,8,9"><br>
+        <button onclick="submit()" class="sbmt">Submit</button>
+    </div>
+    <div  class="container">
+        <h1>Enter Your Pin Here</h1>
+        <input id="input" placeholder="Enter the key !"type="password" maxlength="4" minlength="4" pattern="0,1,2,3,4,5,6,7,8,9" >
+        <div class="buttons">
+            <br/>
+            <button class="btn" onclick="number('1')">1</button>
+            <button class="btn" onclick="number('2')">2</button>
+            <button class="btn" onclick="number('3')" >3</button><br>
+            <button class="btn" onclick="number('4')">4</button>
+            <button class="btn" onclick="number('5')">5</button>
+            <button class="btn" onclick="number('6')">6</button><br>
+            <button class="btn" onclick="number('7')">7</button>
+            <button class="btn" onclick="number('8')">8</button>
+            <button class="btn" onclick="number('9')">9</button><br>
+            <button class="btn" onclick="number('*')">*</button>
+            <button class="btn" onclick="number('0')">0</button>
+            <button class="btn" onclick="number('#')">#</button><br>
+            <button class="btn" onclick="unlock()">OK</button>
+        </div>
+    </div>
+    <div class="para">
+        <h1>Screen Unlocked</h1>
+        <h1>Now You Can Do Anything Here...🎈</h1>
+    </div>
+    <script>
+        var input =document.getElementById("input");
+        var container = document.querySelector('.container');
+        var keycontainer = document.getElementById("keycontainer");
+        var key = document.getElementById("key");
+        var para = document.querySelector(".para");
+        function submit(){
+            
+            container.style.display="flex";
+            keycontainer.style.height="30vh";
+            keycontainer.style.paddingTop="3vh";
+
+        }
+        function number(a){
+            input.value=input.value+a;
+            
+        }
+        function unlock(){
+            if (input.value === key.value)
+             {
+                container.style.display= "none";
+                para.style.display="contents";
+                  keycontainer.style.display="none";
+
+             }
+             else{
+                 alert("Enter the correct Key")
+             }
+             
+            
+        }
+    </script>
+    
+</body>
+</html>
